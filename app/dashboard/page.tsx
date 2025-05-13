@@ -8,7 +8,7 @@
 import { redirect } from 'next/navigation';
 
 export default function Home() {
-  redirect('/(overview)');
+  redirect('/(overview)/page.tsx');
 }
 
 
