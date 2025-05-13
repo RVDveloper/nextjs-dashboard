@@ -1,9 +1,9 @@
 {
+  "/query/route": "app/query/route.js",
+  "/seed/route": "app/seed/route.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/dashboard/(overview)/page": "app/dashboard/(overview)/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
   "/dashboard/customers/page": "app/dashboard/customers/page.js",
   "/dashboard/invoices/page": "app/dashboard/invoices/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/query/route": "app/query/route.js",
-  "/seed/route": "app/seed/route.js"
+  "/dashboard/(overview)/page": "app/dashboard/(overview)/page.js"
 }
