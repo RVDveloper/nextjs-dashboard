@@ -24,7 +24,7 @@ function generateYAxis(revenueData: { revenue: number }[]) {
 export default async function RevenueChart() { // Make component async, remove the props
   const revenue = await fetchRevenue();  
   const chartHeight = 350;
-  
+ 
 
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
 
