@@ -4,10 +4,11 @@ const nextConfig: NextConfig = {
   appDir: true,
   css: {
     modules: {
-      localIdentName: '[local]___[hash:base64:5]'
+      localIdentName: '[name]__[local]___[hash:base64:5]'
     }
   },
   experimental: {
+    optimizeCss: true,
     serverComponentsExternalPackages: ['bcrypt'],
     serverActions: {
       allowedOrigins: ['localhost:3000'],
