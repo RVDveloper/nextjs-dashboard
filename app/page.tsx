@@ -2,7 +2,7 @@
 import { redirect } from 'next/navigation';
 
 export default function Home() {
-  redirect('/app/dashboard/(overview)/page');
+  redirect('/dashboard/(overview)/page');
 }
 
 // export default function Page() {
