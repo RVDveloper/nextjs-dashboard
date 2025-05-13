@@ -17,6 +17,12 @@ var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.n(__turbopack_context__.i("[project]/app/dashboard/layout.tsx [app-rsc] (ecmascript)"));
 }}),
+"[project]/app/dashboard/loading.tsx [app-rsc] (ecmascript, Next.js server component)": ((__turbopack_context__) => {
+
+var { g: global, __dirname } = __turbopack_context__;
+{
+__turbopack_context__.n(__turbopack_context__.i("[project]/app/dashboard/loading.tsx [app-rsc] (ecmascript)"));
+}}),
 "[externals]/os [external] (os, cjs)": (function(__turbopack_context__) {
 
 var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;
@@ -659,4 +665,4 @@ __turbopack_context__.n(__turbopack_context__.i("[project]/app/dashboard/page.ts
 
 };
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__991eb073._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__6557493a._.js.map

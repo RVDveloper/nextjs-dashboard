@@ -15,8 +15,8 @@ async function listInvoices() {
 
 export async function GET() {
   try {
-    const data = await listInvoices();  // Ejecuta la consulta
-    return Response.json(data);  // Devuelve los resultados como JSON
+    const data = await listInvoices();  
+    return Response.json(data);  
   } catch (error) {
     return Response.json({ error: 'Error fetching data' }, { status: 500 });
   }
