@@ -1,11 +1,23 @@
 import bcrypt from 'bcrypt';
 import postgres from 'postgres';
-import { invoices, customers, revenue, users } from '../lib/placeholder-data';
+import { customers, invoices, revenue, users } from '../lib/placeholder-data';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
+// Función para verificar si la extensión ya existe
+async function checkAndCreateUuidExtension() {
+  const result = await sql`
+    SELECT * FROM pg_extension WHERE extname = 'uuid-ossp';
+  `;
+
+  // Si no existe, crearla
+  if (result.length === 0) {
+    await sql`CREATE EXTENSION "uuid-ossp"`;
+  }
+}
+
+// Crear las tablas de datos
 async function seedUsers() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await sql`
     CREATE TABLE IF NOT EXISTS users (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -30,8 +42,6 @@ async function seedUsers() {
 }
 
 async function seedInvoices() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-
   await sql`
     CREATE TABLE IF NOT EXISTS invoices (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -56,8 +66,6 @@ async function seedInvoices() {
 }
 
 async function seedCustomers() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-
   await sql`
     CREATE TABLE IF NOT EXISTS customers (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -103,6 +111,9 @@ async function seedRevenue() {
 
 export async function GET() {
   try {
+    // Verificar si la extensión UUID existe antes de crearla
+    await checkAndCreateUuidExtension();
+
     const result = await sql.begin((sql) => [
       seedUsers(),
       seedCustomers(),
@@ -112,6 +123,7 @@ export async function GET() {
 
     return Response.json({ message: 'Database seeded successfully' });
   } catch (error) {
+    console.error('Error during seeding:', error);
     return Response.json({ error }, { status: 500 });
   }
 }
